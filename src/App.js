@@ -18,17 +18,12 @@ function App() {
       id:uuid(),
       content:"Task 01",
       completed:false,
-      created:Date.now(),
-      details:"Details on first task",
       requirements:[]
     },
     {
       id:uuid(),
       content:"Task 02",
       completed:true,
-      created:Date.now(),
-      details:null,
-      completed:"01-10-2021"
     }
   ]);
     
@@ -38,13 +33,20 @@ function App() {
   return (
     <TasksContext.Provider value={{ tasks, setTasks }}>
       <div className="App">
+        <h1>Welcome to MyTodoList</h1>
+        <p>Alpha version 0.1.4<br/>
+          Version name : <strong>Ugly but functional</strong>
+        </p>
         <nav>
           <ul>
-            <li>
-              <Link to="/tasks">Tasks</Link>
+            <li key="tasks">
+              <Link to="/tasks">Tasks list</Link>
             </li>
-            <li>
-              <Link to="/tasks/add">Add</Link>
+            {/* <li key="tree">
+              <Link to="/tree">Tasks tree</Link>
+            </li> */}
+            <li key="new">
+              <Link to="/tasks/add">New task</Link>
             </li>
           </ul>
         </nav>
@@ -59,6 +61,7 @@ function App() {
             element={
               <main>
                 <p>There's nothing here!</p>
+                <Link to="/">Back to MyTodoList</Link>
               </main>
             }
           />

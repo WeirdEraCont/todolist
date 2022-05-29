@@ -29,8 +29,8 @@ function AllTasksScreen() {
             <div className="TaskMaster">
                 <ul>
                     {tasks.map(task =>
-                        <li>
-                            <TaskPreview key={task.id} task={task} onDel={del_task} onCheck={complete_task}/>
+                        <li key={task.id}>
+                            <TaskPreview task={task} onDel={del_task} onCheck={complete_task}/>
                         </li>
                     )}
                 </ul>
