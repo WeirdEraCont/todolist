@@ -1,11 +1,15 @@
 import {useForm} from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
 // import Select from 'react-select';
 
+import TDLButton from './TDLButton';
 
-function EditTaskForm({current_task, onEditTask}) {
+
+function EditTaskForm({task, onEditTask}) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
+    const {completed, setCompleted} = useState(task.completed);
 
     // const task_list = [
     //   {value:tasks[0].id, label:tasks[0].content},
@@ -13,8 +17,8 @@ function EditTaskForm({current_task, onEditTask}) {
     // ];
   
     function onSubmit(data){
-      const {content, req} = data;
-      onEditTask(content, req);
+      const {content} = data;
+      onEditTask(content);
       navigate("/tasks");
     }
   
@@ -22,7 +26,7 @@ function EditTaskForm({current_task, onEditTask}) {
   
       <form onSubmit={handleSubmit(onSubmit)}>
         <h4 className="FormFieldName">Task name</h4>
-        <input className="FormFieldInput" placeholder="Task name" {...register("content", { required: true, value:current_task.content })} />
+        <input className="FormFieldInput" placeholder="Task name" {...register("content", { required: true, value:task.content })} />
         {/* <h4 className="FormFieldName">Tasks requirements</h4>
         <Select
           isMulti
