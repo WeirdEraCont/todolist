@@ -2,13 +2,13 @@ import {useForm} from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
 
 
-function AddTaskForm({task, onEditTask}) {
+function EditTaskForm({task, onEditTask}) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
   
     function onSubmit(data){
-      const {content, details} = data;
-      onEditTask(content, details);
+      const {content} = data;
+      onEditTask(content);
       navigate("/tasks");
     }
   
@@ -17,8 +17,6 @@ function AddTaskForm({task, onEditTask}) {
       <form onSubmit={handleSubmit(onSubmit)}>
         <h4 className="FormFieldName">Task name</h4>
         <input className="FormFieldInput" {...register("content", { required: true, value:task.content })} />
-        <h4 className="FormFieldName">Task details</h4>
-        <input className="FormFieldInput" {...register("details", { required: false, value:task.details })} />
         <p className='alert'>
           {errors.content && <span>Content is required</span>}
         </p>
@@ -27,4 +25,4 @@ function AddTaskForm({task, onEditTask}) {
       </form>);
   }
 
-export default AddTaskForm
+export default EditTaskForm

@@ -1,12 +1,14 @@
-import {useForm} from 'react-hook-form'
+import {useForm} from 'react-hook-form';
+import { useNavigate } from "react-router-dom";
 
 function AddTaskForm({onAddTask}) {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate();
   
     function onSubmit(data){
-      const {content, details} = data;
-  
-      onAddTask(content, details);
+      const {content} = data;
+      onAddTask(content);
+      navigate("/tasks");
     }
   
     return (
@@ -14,7 +16,6 @@ function AddTaskForm({onAddTask}) {
       <form onSubmit={handleSubmit(onSubmit)}>
   
         <input {...register("content", { required: true })} />
-        <input {...register("details", { required: false })} />
         <p className='alert'>
           {errors.content && <span>Content is required</span>}
         </p>
