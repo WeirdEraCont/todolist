@@ -25,17 +25,6 @@ function EditTaskForm({task, onEditTask}) {
     return (
   
       <form onSubmit={handleSubmit(onSubmit)}>
-<<<<<<< Updated upstream
-        <h4 className="FormFieldName">Task name</h4>
-        <input className="FormFieldInput" placeholder="Task name" {...register("content", { required: true, value:task.content })} />
-        {/* <h4 className="FormFieldName">Tasks requirements</h4>
-        <Select
-          isMulti
-          options={ task_list }
-          {...register("req", {required:false})}
-        /> */}
-        <p className='alert'>
-=======
         <h4>Task name</h4>
         <input placeholder="Task name" {...register("content", { required: true, value:task.content })} />
         {/* <h4>Tasks requirements</h4>
@@ -45,7 +34,6 @@ function EditTaskForm({task, onEditTask}) {
           {...register("req", {required:false})}
         /> */}
         <p className='formAlert'>
->>>>>>> Stashed changes
           {errors.content && <span>Content is required</span>}
         </p>
   
