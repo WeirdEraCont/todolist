@@ -1,18 +1,26 @@
 import {React, useContext} from 'react';
+import axios from 'axios';
+
 import TaskPreview from './TaskPreview';
 import TasksContext from '../tasksContext';
+import TASKS_URL from "../databaseURL.js";
 
 function AllTasksScreen() {
 
     const { tasks, setTasks } = useContext(TasksContext);
 
     
-    function del_task(task){
+    async function del_task(task){
         const new_tasks = tasks.filter(a_task => task.id !== a_task.id);
         setTasks([...new_tasks]);
+        try {
+            axios.delete(TASKS_URL+task.id);
+        } catch(error) {
+            console.log(error);
+        }
     }
 
-    function complete_task(task){
+    async function complete_task(task){
         
         const index = tasks.findIndex(a_task => task.id === a_task.id);
         const newTasks = tasks; // copy tasks
@@ -21,6 +29,12 @@ function AllTasksScreen() {
         updated_task.completion_date = Date.now(); // set completion date
         newTasks[index] = updated_task; // update task at its index
         setTasks(newTasks); //update state
+
+        try {
+            axios.patch(TASKS_URL+task.id,updated_task);
+        } catch(error) {
+            console.log(error);
+        }
     }
 
     return (
@@ -29,8 +43,8 @@ function AllTasksScreen() {
             <div className="TaskMaster">
                 <ul>
                     {tasks.map(task =>
-                        <li>
-                            <TaskPreview key={task.id} task={task} onDel={del_task} onCheck={complete_task}/>
+                        <li key={task.id}>
+                            <TaskPreview task={task} onDel={del_task} onCheck={complete_task}/>
                         </li>
                     )}
                 </ul>

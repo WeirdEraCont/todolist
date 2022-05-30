@@ -1,24 +1,31 @@
 import { React, useContext } from 'react';
+import axios from 'axios';
+import {v4 as uuid} from 'uuid';
 
 import AddTaskForm from "./AddTaskForm";
 import TasksContext from '../tasksContext';
-import {v4 as uuid} from 'uuid';
+import TASKS_URL from "../databaseURL.js";
+
 
 function AddTaskScreen() {
 
     const { tasks, setTasks } = useContext(TasksContext);
 
-    function add_task(content, details){
+    async function add_task(content, details){
 
         const newTask = {
             id:uuid(),
             completed:false,
             content:content,
-            details:details,
-            date: Date.now()
         };
-    
+
         setTasks([...tasks,newTask]);
+
+        try {
+            await axios.post(TASKS_URL, newTask)
+        } catch(error) {
+            console.log(error);
+        }
     }
 
     return(

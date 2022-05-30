@@ -1,14 +1,24 @@
 import {useForm} from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+// import Select from 'react-select';
+
+import TDLButton from './TDLButton';
 
 
-function AddTaskForm({task, onEditTask}) {
+function EditTaskForm({task, onEditTask}) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
+    const {completed, setCompleted} = useState(task.completed);
+
+    // const task_list = [
+    //   {value:tasks[0].id, label:tasks[0].content},
+    //   {value:tasks[1].id, label:tasks[1].content}
+    // ];
   
     function onSubmit(data){
-      const {content, details} = data;
-      onEditTask(content, details);
+      const {content} = data;
+      onEditTask(content);
       navigate("/tasks");
     }
   
@@ -17,9 +27,13 @@ function AddTaskForm({task, onEditTask}) {
       <form onSubmit={handleSubmit(onSubmit)}>
 <<<<<<< Updated upstream
         <h4 className="FormFieldName">Task name</h4>
-        <input className="FormFieldInput" {...register("content", { required: true, value:task.content })} />
-        <h4 className="FormFieldName">Task details</h4>
-        <input className="FormFieldInput" {...register("details", { required: false, value:task.details })} />
+        <input className="FormFieldInput" placeholder="Task name" {...register("content", { required: true, value:task.content })} />
+        {/* <h4 className="FormFieldName">Tasks requirements</h4>
+        <Select
+          isMulti
+          options={ task_list }
+          {...register("req", {required:false})}
+        /> */}
         <p className='alert'>
 =======
         <h4>Task name</h4>
@@ -39,4 +53,4 @@ function AddTaskForm({task, onEditTask}) {
       </form>);
   }
 
-export default AddTaskForm
+export default EditTaskForm
