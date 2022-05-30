@@ -12,15 +12,22 @@ function AddTaskForm({onAddTask}) {
     return (
   
       <form onSubmit={handleSubmit(onSubmit)}>
+<<<<<<< Updated upstream
   
         <input {...register("content", { required: true })} />
         <input {...register("details", { required: false })} />
         <p className='alert'>
+=======
+        <h4>Task name</h4>
+        <input placeholder="Task name" {...register("content", { required: true })} />
+        <p className='formAlert'>
+>>>>>>> Stashed changes
           {errors.content && <span>Content is required</span>}
         </p>
   
         <input type="submit" value="Add" />
-      </form>);
+      </form>
+      );
   }
 
 export default AddTaskForm

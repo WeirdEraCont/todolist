@@ -38,6 +38,7 @@ function App() {
   return (
     <TasksContext.Provider value={{ tasks, setTasks }}>
       <div className="App">
+<<<<<<< Updated upstream
         <nav>
           <ul>
             <li>
@@ -45,6 +46,22 @@ function App() {
             </li>
             <li>
               <Link to="/tasks/add">Add</Link>
+=======
+        <h1>Welcome to MyTodoList</h1>
+        <p>Pre-alpha version 0.1.4<br/>
+          Version name : <strong>Ugly but functional</strong>
+        </p>
+        <nav>
+          <ul class="nav">
+            <li key="tasks">
+              <Link to="/tasks">Tasks list</Link>
+            </li>
+            {/* <li key="tree">
+              <Link to="/tree">Tasks tree</Link>
+            </li> */}
+            <li key="new">
+              <Link to="/tasks/add">Create a task</Link>
+>>>>>>> Stashed changes
             </li>
           </ul>
         </nav>

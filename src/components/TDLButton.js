@@ -1,7 +1,7 @@
 function TDLButton(props) {
     return (
-        <div className="Button">
-            <button onClick={props.onClick}>{props.txt}</button>
+        <div>
+            <button id={props.id} onClick={props.onClick}>{props.txt}</button>
         </div>
     );
 }
