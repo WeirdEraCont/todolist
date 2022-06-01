@@ -3,7 +3,7 @@
  }
 
 body {
-    font-family : sans-serif;
+    font-family: sans-serif;
     text-align: center;
 }
 
@@ -29,6 +29,25 @@ button:hover {
 
 #alert:hover {
     border: solid 1px #c90505;
+}
+
+input.submit {
+    border-radius: 15px;
+    margin-right: 8px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: #ace0f3;
+    border: solid 1px #2779BF;
+}
+
+input.submit:hover {
+    border: solid 1px #ace0f3;
+}
+
+#taskDone {
+    font-size: 13px;
 }
 
 ul {

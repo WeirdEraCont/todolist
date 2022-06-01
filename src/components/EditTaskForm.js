@@ -37,7 +37,7 @@ function EditTaskForm({task, onEditTask}) {
           {errors.content && <span>Content is required</span>}
         </p>
   
-        <input className="FormSubmit" type="submit" value="Update" />
+        <input class="submit" className="FormSubmit" type="submit" value="Update" />
       </form>);
   }
 
