@@ -50,13 +50,13 @@ input.submit:hover {
     font-size: 13px;
 }
 
+.formAlert {
+    color: red;
+}
+
 ul {
     list-style-type: none;
     padding: 0px;
-}
-
-.formAlert {
-    color: red;
 }
 
 ul.nav {

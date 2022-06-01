@@ -1,6 +1,5 @@
 import { React, useState, useEffect } from 'react';
 import { Route, Routes, Link } from "react-router-dom";
-import {v4 as uuid} from 'uuid';
 import axios from 'axios';
 
 import './App.css';
@@ -9,6 +8,7 @@ import AllTasksScreen from './components/AllTasksScreen';
 import AddTaskScreen from './components/AddTaskScreen';
 import EditTaskScreen from './components/EditTaskScreen';
 import TasksContext from './tasksContext';
+import TASKS_URL from "./databaseURL";
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -17,8 +17,7 @@ function App() {
      
     async function fetch_tasks_from_api(){
       try {
-        const response = await axios.get("https://sbjqg2rl.directus.app/items/tasks");
-        console.log(response);
+        const response = await axios.get(TASKS_URL);
         const fetched_data = response.data.data;
         setTasks(fetched_data);
       } catch (error) {
@@ -40,7 +39,7 @@ function App() {
           Version name : <strong>Ugly but functional</strong>
         </p>
         <nav>
-          <ul class="nav">
+          <ul className="nav">
             <li key="tasks">
               <Link to="/tasks">Tasks list</Link>
             </li>

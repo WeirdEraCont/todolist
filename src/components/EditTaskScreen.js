@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import EditTaskForm from "./EditTaskForm";
 import TasksContext from '../tasksContext';
-import TASKS_URL from "../databaseURL.js";
+import TASKS_URL from "../databaseURL";
 
 function EditTaskScreen () {
 

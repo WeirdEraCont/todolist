@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 // import Select from 'react-select';
 
-import TDLButton from './TDLButton';
 
 
 function EditTaskForm({task, onEditTask}) {
@@ -37,7 +36,7 @@ function EditTaskForm({task, onEditTask}) {
           {errors.content && <span>Content is required</span>}
         </p>
   
-        <input class="submit" className="FormSubmit" type="submit" value="Update" />
+        <input className="submit" type="submit" value="Update" />
       </form>);
   }
 

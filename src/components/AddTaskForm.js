@@ -20,7 +20,7 @@ function AddTaskForm({onAddTask}) {
           {errors.content && <span>Content is required</span>}
         </p>
   
-        <input class="submit" type="submit" value="Create" />
+        <input className="submit" type="submit" value="Create" />
       </form>
       );
   }

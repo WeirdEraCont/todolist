@@ -4,7 +4,7 @@ import {v4 as uuid} from 'uuid';
 
 import AddTaskForm from "./AddTaskForm";
 import TasksContext from '../tasksContext';
-import TASKS_URL from "../databaseURL.js";
+import TASKS_URL from "../databaseURL";
 
 
 function AddTaskScreen() {
